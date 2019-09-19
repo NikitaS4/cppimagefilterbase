@@ -26,7 +26,7 @@ int main( int argc, char *argv[] )
 		for (int i = x * y / 2; i < 2 * x * y; ++i)
 		{
 			if (i % channels == 0)
-				data[y * x + i] = 0xAA;
+				data[y * x + i] = 0xFF;
 			else 
 				data[y * x + i] = 0x00;
 		}
