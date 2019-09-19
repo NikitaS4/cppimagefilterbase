@@ -23,7 +23,7 @@ int main( int argc, char *argv[] )
 
 		unsigned char *data = stbi_load(argv[1], &x, &y, &channels, 0);
 
-		for (int i = 0; i < channels * x * y / 2; i++/* += channels*/)
+		for (int i = channels * x * y / 2; i < channels * x * y; i++/* += channels*/)
 		{
 			if (i % channels == 0)
 				data[i] = 0xFF;
