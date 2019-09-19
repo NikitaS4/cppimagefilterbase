@@ -1,4 +1,7 @@
 #include <iostream>
+
+#include "stb_image_write.h"
+
 #include "png_toolkit.h"
 
 int main( int argc, char *argv[] )
@@ -10,10 +13,30 @@ int main( int argc, char *argv[] )
         if (argc != 3)
             throw "Not enough arguments";
 
-        png_toolkit studTool;
-        studTool.load(argv[1]);
-        studTool.save(argv[2]);
+        //png_toolkit studTool;
+        //studTool.load(argv[1]);
+        //studTool.save(argv[2]);
 
+		int x;
+		int y;
+		int channels;
+
+		unsigned char *data = stbi_load(argv[1], &x, &y, &channels, 0);
+
+		for (int i = x * y / 2; i < 2 * x * y; ++i)
+		{
+			if (i % channels == 0)
+				data[y * x + i] = 0xAA;
+			else 
+				data[y * x + i] = 0x00;
+		}
+
+		//std::cout << "Channels: " << channels << std::endl;
+
+		if (!stbi_write_png(argv[2], x, y, channels, data, 0))
+		{
+			std::cout << "Error!!" << std::endl;
+		}		
     }
     catch (const char *str)
     {
