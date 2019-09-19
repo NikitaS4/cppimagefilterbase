@@ -23,12 +23,12 @@ int main( int argc, char *argv[] )
 
 		unsigned char *data = stbi_load(argv[1], &x, &y, &channels, 0);
 
-		for (int i = x * y / 2; i < 2 * x * y; ++i)
+		for (int i = 0; i < channels * x * y / 2; i++/* += channels*/)
 		{
 			if (i % channels == 0)
-				data[y * x + i] = 0xFF;
+				data[i] = 0xFF;
 			else 
-				data[y * x + i] = 0x00;
+				data[i] = 0x00;
 		}
 
 		//std::cout << "Channels: " << channels << std::endl;
