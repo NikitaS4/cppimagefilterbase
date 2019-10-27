@@ -28,6 +28,8 @@ public:
     bool save( std::string const &pictureName );
     image_data getPixelData( void ) const;
 
+	void setPixelData(image_data& data);
+
 private:
     image_data imgData;
 };

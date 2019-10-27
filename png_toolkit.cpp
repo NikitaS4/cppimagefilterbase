@@ -32,3 +32,7 @@ image_data png_toolkit::getPixelData( void ) const
 {
     return imgData;
 }
+
+void png_toolkit::setPixelData(image_data& data) {
+	imgData.pixels = data.pixels;
+}
