@@ -9,30 +9,7 @@
 #include "FilterRect.h"
 #include "Filtrator.h"
 #include "RedFiltrator.h"
-#include "RectAdapter.h"
-
-
-//old code
-//int x;
-//int y;
-//int channels;
-//
-//unsigned char *data = stbi_load(argv[1], &x, &y, &channels, 0);
-//
-//for (int i = channels * x * y / 2; i < channels * x * y; i++/* += channels*/)
-//{
-//	if (i % channels == 0)
-//		data[i] = 0xFF;
-//	else 
-//		data[i] = 0x00;
-//}
-//
-////std::cout << "Channels: " << channels << std::endl;
-//
-//if (!stbi_write_png(argv[2], x, y, channels, data, 0))
-//{
-//	std::cout << "Error!!" << std::endl;
-//}		
+#include "RectAdapter.h"	
 
 
 int main( int argc, char *argv[] )
@@ -48,14 +25,14 @@ int main( int argc, char *argv[] )
 
 		RedFiltrator redFiltrator;
 
-        studTool.load(argv[2]);      
+        studTool.load(argv[2]);   
 
 		ConfigParser parser;
 		parser.init(argv[1]);
 		std::vector<FilterRect> filterRects = parser.getRects();
 		RealRect real;
 
-		image_data imageData = studTool.getPixelData();
+		image_data imageData = studTool.getPixelData();		
 
 		for (auto &fRect : filterRects) {
 			real = RectAdapter::frectToReal(fRect, imageData);
@@ -69,7 +46,7 @@ int main( int argc, char *argv[] )
     {
         std::cout << "Error: " << str << std::endl;
         return 1;
-    }
+    }	
 
     return 0;
 }

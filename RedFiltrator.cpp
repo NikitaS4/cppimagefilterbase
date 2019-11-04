@@ -1,10 +1,13 @@
 #include "RedFiltrator.h"
 
+#include "ImagePixels.h"
+
 void RedFiltrator::apply(const RealRect& area, image_data& image) {
+	ImagePixels imPxls = ImagePixels::createImage(image);
 	unsigned char* curBytes = nullptr;
 	for (unsigned int i = area.hBeg; i < area.hEnd; ++i) {
 		for (unsigned int j = area.wBeg; j < area.wEnd; ++j) {
-			curBytes = &(image.pixels[(i * image.w + j) * image.compPerPixel]);
+			curBytes = imPxls[i][j];
 			curBytes[0] = (unsigned char)0xFF;
 			curBytes[1] = 0;
 			curBytes[2] = 0;
