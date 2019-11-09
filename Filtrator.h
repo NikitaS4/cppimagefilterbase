@@ -7,7 +7,7 @@
 
 class Filtrator {
 public:
-	virtual void apply(const RealRect& area, image_data& image) = 0;
+	virtual void apply(RealRect& area, image_data& image) = 0;
 	virtual Filter getFilterType() const = 0;
 protected:
 	static const Filter f_type = Filter::UNDEFINED;

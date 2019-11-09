@@ -5,6 +5,8 @@ Filter FilterHelper::parse(std::string& str) {
 	if (str == "Red") {
 		return Filter::RED;
 	}
-	else
+	else if (str == "Blur") {
+		return Filter::BLUR;
+	}
 		return Filter::UNDEFINED;
 }

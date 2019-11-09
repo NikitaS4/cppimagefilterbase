@@ -8,6 +8,14 @@ image_data& ImagePixels::returnImage() {
 	return rawImage;
 }
 
-unsigned char* ImagePixels::getPixel(int w, int h) {
-	return &(rawImage.pixels[(h * rawImage.w + w) * rawImage.compPerPixel]);
+PNGCortege ImagePixels::getPixel(int w, int h) {
+	return PNGCortege(&(rawImage.pixels[(h * rawImage.w + w) * rawImage.compPerPixel]));
+}
+
+unsigned int ImagePixels::getH() {
+	return rawImage.h;
+}
+
+unsigned int ImagePixels::getW() {
+	return rawImage.w;
 }

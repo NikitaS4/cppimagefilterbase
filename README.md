@@ -3,6 +3,7 @@ Image filters
 
 Available filters:
 Red
+Blur
 
 How to use:
 1. Put image (*.png) nearby *.exe file
@@ -19,3 +20,4 @@ For now, it's important that configuration file is always right and there's no e
 
 Config example:
 Red 0 0 2 2
+Blur 2 2 1 1

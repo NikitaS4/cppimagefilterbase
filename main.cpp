@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 
 #include "stb_image_write.h"
 
@@ -9,7 +10,8 @@
 #include "FilterRect.h"
 #include "Filtrator.h"
 #include "RedFiltrator.h"
-#include "RectAdapter.h"	
+#include "RectAdapter.h"
+#include "BlurFiltrator.h"
 
 
 int main( int argc, char *argv[] )
@@ -21,9 +23,10 @@ int main( int argc, char *argv[] )
         if (argc != 4)
             throw "Not enough arguments";
 
-        png_toolkit studTool;
+		png_toolkit studTool;	
 
 		RedFiltrator redFiltrator;
+		BlurFiltrator blurFiltrator;
 
         studTool.load(argv[2]);   
 
@@ -36,17 +39,37 @@ int main( int argc, char *argv[] )
 
 		for (auto &fRect : filterRects) {
 			real = RectAdapter::frectToReal(fRect, imageData);
-			redFiltrator.apply(real, imageData);
+			switch (fRect.getFilter())
+			{
+			case Filter::RED:
+				redFiltrator.apply(real, imageData);
+				break;
+			case Filter::BLUR:	
+				blurFiltrator.apply(real, imageData);
+				break;
+			default:
+				throw std::runtime_error("Bad filter name");
+				break;
+			}					
 		}
 
 		studTool.setPixelData(imageData);
 		studTool.save(argv[3]);
     }
-    catch (const char *str)
+    catch (std::runtime_error& err)
     {
-        std::cout << "Error: " << str << std::endl;
+        std::cout << "Error: " << err.what() << std::endl;
         return 1;
     }	
+	catch (...) {
+		std::cout << "Unknown exception\n";
+	}
 
+	std::cout << "Done!\n";
     return 0;
 }
+
+/*
+Размеры входной и выходной картинок не совпадают (?)
+Уточнить, действительно ли это BLUR, или что-то не так 
+*/

@@ -4,7 +4,8 @@
 
 enum class Filter {
 	UNDEFINED,
-	RED
+	RED,
+	BLUR
 };
 
 class FilterHelper {
