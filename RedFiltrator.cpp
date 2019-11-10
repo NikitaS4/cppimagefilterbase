@@ -5,8 +5,8 @@
 
 void RedFiltrator::apply(RealRect& area, image_data& image) {
 	ImagePixels imPxls = ImagePixels::createImage(image);
-	for (unsigned int i = area.hBeg; i < area.hEnd; ++i) {
-		for (unsigned int j = area.wBeg; j < area.wEnd; ++j) {
+	for (unsigned int i = area.wBeg; i < area.wEnd; ++i) {
+		for (unsigned int j = area.hBeg; j < area.hEnd; ++j) {
 			PNGCortege curPixel = imPxls[i][j];
 			curPixel.setR((unsigned char)0xFF);
 			curPixel.setG(0);

@@ -6,7 +6,8 @@ void ConfigParser::init(const std::string& fName) {
 
 	while (!input.eof()) {
 		std::getline(input, curStr);
-		rects.push_back(FilterRect::createInstance(curStr));
+		if (curStr != "") //to ignore empty lines
+			rects.push_back(FilterRect::createInstance(curStr));
 	}
 }
 

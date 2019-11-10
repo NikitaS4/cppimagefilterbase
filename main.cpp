@@ -65,7 +65,7 @@ int main( int argc, char *argv[] )
 		std::cout << "Unknown exception\n";
 	}
 
-	std::cout << "Done!\n";
+	//std::cout << "Done!\n";
     return 0;
 }
 
