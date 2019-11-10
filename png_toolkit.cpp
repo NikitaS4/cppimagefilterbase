@@ -3,6 +3,7 @@
 #include <array>
 #include "stb_image_write.h"
 #include "png_toolkit.h"
+#include <iostream>
 
 png_toolkit::png_toolkit()
 {
@@ -34,5 +35,13 @@ image_data png_toolkit::getPixelData( void ) const
 }
 
 void png_toolkit::setPixelData(image_data& data) {
+	if (imgData.w != data.w) {
+		std::cout << "Wrong w : " << imgData.w << " != " <<
+			data.w << "\n";
+	}
+	if (imgData.h != data.h) {
+		std::cout << "Wrong h : " << imgData.h << " != " <<
+			data.h << "\n";
+	}
 	imgData.pixels = data.pixels;
 }

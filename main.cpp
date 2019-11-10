@@ -35,7 +35,7 @@ int main( int argc, char *argv[] )
 		std::vector<FilterRect> filterRects = parser.getRects();
 		RealRect real;
 
-		image_data imageData = studTool.getPixelData();		
+		image_data imageData = studTool.getPixelData();
 
 		for (auto &fRect : filterRects) {
 			real = RectAdapter::frectToReal(fRect, imageData);
@@ -53,7 +53,7 @@ int main( int argc, char *argv[] )
 			}					
 		}
 
-		studTool.setPixelData(imageData);
+		//studTool.setPixelData(imageData); //no need - it's shallow copy
 		studTool.save(argv[3]);
     }
     catch (std::runtime_error& err)
