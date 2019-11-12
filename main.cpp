@@ -51,15 +51,12 @@ int main( int argc, char *argv[] )
 				throw std::runtime_error("Bad filter name");
 				break;
 			}					
-		}
-
-		//studTool.setPixelData(imageData); //no need - it's shallow copy
+		}		
 		studTool.save(argv[3]);
     }
     catch (std::runtime_error& err)
     {
-        std::cout << "Error: " << err.what() << std::endl;
-        return 1;
+        std::cout << "Error: " << err.what() << std::endl;        
     }	
 	catch (...) {
 		std::cout << "Unknown exception\n";
