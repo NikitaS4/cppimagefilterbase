@@ -19,6 +19,14 @@ unsigned int ConvKer::getSize() {
 	return size;
 }
 
+void ConvKer::print() {
+	for (unsigned int i = 0; i < size; ++i) {
+		for (unsigned int j = 0; j < size; ++j) {
+			std::cout << kernel[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
+}
 
 double ConvKer::apply(std::vector<std::vector<double>>& imagePart) {
 	double ans = 0;

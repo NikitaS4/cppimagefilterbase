@@ -11,6 +11,7 @@ public:
 	Convolution(unsigned int kerSize, ConvStrategy* strategy);
 
 	void apply(std::vector<std::vector<double>>& image);
+	void printKernel(); //for debug only
 private:
 	Convolution() = delete;	
 	ConvKer kernel;

@@ -9,6 +9,11 @@ Convolution::Convolution(unsigned int kerSize, ConvStrategy* strategy)
 	strategy->fillKernel(kernel);
 }
 
+void Convolution::printKernel() {
+	std::cout << "kernel:\n===========\n";
+	kernel.print();
+	std::cout << "===========\n";
+}
 
 void Convolution::apply(std::vector<std::vector<double>>& image) {
 	std::vector<std::vector<double>> curImPart;

@@ -7,7 +7,9 @@ enum class Filter {
 	RED,
 	EDGE,
 	THRESHOLD,
-	BLUR
+	BLUR,
+	FANCY_BLUR,
+	BW
 };
 
 class FilterHelper {

@@ -1,12 +1,11 @@
-#include "BlurFiltrator.h"
+#include "FancyBlurFiltrator.h"
 #include "ImagePixels.h"
 #include <vector>
-#include <iostream>
 
 #include "Convolution.h"
 #include "ConvBlurStrategy.h"
 
-void BlurFiltrator::apply(RealRect& area, image_data& image) {
+void FancyBlurFiltrator::apply(RealRect& area, image_data& image) {
 	ImagePixels imPxls = ImagePixels::createImage(image);
 
 	std::vector<std::vector<double>> reds;
@@ -49,6 +48,6 @@ void BlurFiltrator::apply(RealRect& area, image_data& image) {
 	}
 }
 
-Filter BlurFiltrator::getFilterType() const {
+Filter FancyBlurFiltrator::getFilterType() const {
 	return f_type;
 }

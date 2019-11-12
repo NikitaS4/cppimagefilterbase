@@ -11,7 +11,9 @@
 #include "Filtrator.h"
 #include "RedFiltrator.h"
 #include "RectAdapter.h"
-#include "BlurFiltrator.h"
+#include "FancyBlurFiltrator.h"
+#include "BWFiltrator.h"
+#include "EdgeFiltrator.h"
 
 
 int main( int argc, char *argv[] )
@@ -23,10 +25,7 @@ int main( int argc, char *argv[] )
         if (argc != 4)
             throw "Not enough arguments";
 
-		png_toolkit studTool;	
-
-		RedFiltrator redFiltrator;
-		BlurFiltrator blurFiltrator;
+		png_toolkit studTool;			
 
         studTool.load(argv[2]);   
 
@@ -37,6 +36,11 @@ int main( int argc, char *argv[] )
 
 		image_data imageData = studTool.getPixelData();
 
+		RedFiltrator redFiltrator;
+		FancyBlurFiltrator fancyBlurFiltrator;
+		BWFiltrator bwFiltrator;
+		EdgeFiltrator edgeFiltrator;
+
 		for (auto &fRect : filterRects) {
 			real = RectAdapter::frectToReal(fRect, imageData);
 			switch (fRect.getFilter())
@@ -44,14 +48,21 @@ int main( int argc, char *argv[] )
 			case Filter::RED:
 				redFiltrator.apply(real, imageData);
 				break;
+			case Filter::FANCY_BLUR:
+				fancyBlurFiltrator.apply(real, imageData);
+				break;
 			case Filter::BLUR:	
-				blurFiltrator.apply(real, imageData);
+				//add blur filtrator
+				//blurFiltrator.apply(real, imageData);
 				break;
 			case Filter::EDGE:
-				//add edge filtrator
+				edgeFiltrator.apply(real, imageData);
 				break;
 			case Filter::THRESHOLD:
 				//add threshold filtrator
+				break;
+			case Filter::BW:
+				bwFiltrator.apply(real, imageData);
 				break;
 			default:
 				throw std::runtime_error("Bad filter name");
@@ -71,8 +82,3 @@ int main( int argc, char *argv[] )
 	//std::cout << "Done!\n";
     return 0;
 }
-
-/*
-Размеры входной и выходной картинок не совпадают (?)
-Уточнить, действительно ли это BLUR, или что-то не так 
-*/
