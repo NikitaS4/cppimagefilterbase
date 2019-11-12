@@ -5,6 +5,8 @@
 enum class Filter {
 	UNDEFINED,
 	RED,
+	EDGE,
+	THRESHOLD,
 	BLUR
 };
 

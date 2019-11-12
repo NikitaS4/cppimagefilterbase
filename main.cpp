@@ -47,6 +47,12 @@ int main( int argc, char *argv[] )
 			case Filter::BLUR:	
 				blurFiltrator.apply(real, imageData);
 				break;
+			case Filter::EDGE:
+				//add edge filtrator
+				break;
+			case Filter::THRESHOLD:
+				//add threshold filtrator
+				break;
 			default:
 				throw std::runtime_error("Bad filter name");
 				break;

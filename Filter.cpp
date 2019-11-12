@@ -8,5 +8,11 @@ Filter FilterHelper::parse(const std::string& str) {
 	else if (str == "Blur") {
 		return Filter::BLUR;
 	}
+	else if (str == "Edge") {
+		return Filter::EDGE;
+	}
+	else if (str == "Threshold") {
+		return Filter::THRESHOLD;
+	}
 		return Filter::UNDEFINED;
 }
