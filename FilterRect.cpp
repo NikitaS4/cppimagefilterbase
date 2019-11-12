@@ -1,5 +1,7 @@
 #include "FilterRect.h"
 
+#include <vector>
+
 bool FilterRect::parseLine(const std::string& str) 
 {
 	unsigned int spacePos;
@@ -8,13 +10,17 @@ bool FilterRect::parseLine(const std::string& str)
 	filter = FilterHelper::parse(fWord); //string to filter
 
 	std::string curWord;
-	unsigned int* params[] = { &hBeg, &wBeg, &hEnd, &wEnd }; //to iterate
+	std::vector<unsigned int*> params { &hBeg, &wBeg, &hEnd, &wEnd }; //to iterate
 	unsigned int beg = spacePos + 1; //access violation ?
-	unsigned int end;
-	for (unsigned int i = 0; i < 4; ++i) {
+	unsigned int end = beg;
+	for (unsigned int i = 0; i < params.size(); ++i) {
+		if (end >= str.size()) {
+			//the config is wrong
+			return false;
+		}
 		for (end = beg; str[end] != ' ' && str[end] != '\n' && str[end] != '\0'; ++end);
 		curWord = str.substr(beg, end - 1); //end is space
-		*params[i] = std::stoi(curWord); //convert
+		*(params[i]) = std::stoi(curWord); //convert
 			beg = end + 1; //for next iteration
 	}
 
