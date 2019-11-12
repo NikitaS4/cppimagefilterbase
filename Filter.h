@@ -10,5 +10,5 @@ enum class Filter {
 
 class FilterHelper {
 public:
-	static Filter parse(std::string& str);
+	static Filter parse(const std::string& str);
 };

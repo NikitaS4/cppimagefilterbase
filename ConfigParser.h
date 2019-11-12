@@ -4,11 +4,13 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <iostream>
 
 class ConfigParser {
 public:
 	ConfigParser() {}
-	void init(const std::string& fName);
+	void initStrByStr(const std::string& fName);
+	void initStream(const std::string& fName);
 	std::vector<FilterRect>& getRects();
 private:
 	std::vector<FilterRect> rects;

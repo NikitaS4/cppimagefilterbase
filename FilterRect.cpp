@@ -1,6 +1,7 @@
 #include "FilterRect.h"
 
 #include <vector>
+#include <iostream>
 
 bool FilterRect::parseLine(const std::string& str) 
 {
@@ -52,5 +53,18 @@ FilterRect FilterRect::createInstance(const std::string& str) {
 	ans.parseLine(str);
 	return ans;
 }
+
+FilterRect FilterRect::createInstance(const std::string& fName,
+	const unsigned int hBeg, const unsigned int hEnd,
+	const unsigned int wBeg, const unsigned int wEnd) {
+	Filter flt = FilterHelper::parse(fName); //string to filter	
+
+	return FilterRect(flt, hBeg, wBeg, hEnd, wEnd);
+}
+
+FilterRect::FilterRect(const Filter flt, const unsigned int hB,
+	const unsigned int wB, const unsigned int hE,
+	const unsigned int wE) : filter(flt), hBeg(hB), hEnd(hE),
+	wBeg(wB), wEnd(wE) {}
 
 FilterRect::FilterRect() {}

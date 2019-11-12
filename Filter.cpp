@@ -1,7 +1,7 @@
 #include "Filter.h"
 
 
-Filter FilterHelper::parse(std::string& str) {
+Filter FilterHelper::parse(const std::string& str) {
 	if (str == "Red") {
 		return Filter::RED;
 	}

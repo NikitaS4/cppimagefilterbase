@@ -31,7 +31,7 @@ int main( int argc, char *argv[] )
         studTool.load(argv[2]);   
 
 		ConfigParser parser;
-		parser.init(argv[1]);
+		parser.initStream(argv[1]);
 		std::vector<FilterRect> filterRects = parser.getRects();
 		RealRect real;
 

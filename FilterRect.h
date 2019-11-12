@@ -16,9 +16,15 @@ public:
 	bool parseLine(const std::string& str);
 
 	static FilterRect createInstance(const std::string& str);
+	static FilterRect createInstance(const std::string& fName,
+		const unsigned int hBeg, const unsigned int hEnd,
+		const unsigned int wBeg, const unsigned int wEnd);
 
 private:
 	FilterRect();
+	FilterRect(const Filter flt, const unsigned int hB,
+		const unsigned int wB, const unsigned int hE,
+		const unsigned int wE);
 
 	Filter filter;
 	unsigned int hBeg;
