@@ -8,27 +8,27 @@
 class FilterRect {
 public:
 	Filter getFilter() const;
-	unsigned int getHBeg() const;
-	unsigned int getWBeg() const;
-	unsigned int getHEnd() const;
-	unsigned int getWEnd() const;
+	float getHBeg() const;
+	float getWBeg() const;
+	float getHEnd() const;
+	float getWEnd() const;
 
 	bool parseLine(const std::string& str);
 
 	static FilterRect createInstance(const std::string& str);
 	static FilterRect createInstance(const std::string& fName,
-		const unsigned int hBeg, const unsigned int hEnd,
-		const unsigned int wBeg, const unsigned int wEnd);
+		const float hBeg, const float hEnd,
+		const float wBeg, const float wEnd);
 
 private:
 	FilterRect();
-	FilterRect(const Filter flt, const unsigned int hB,
-		const unsigned int wB, const unsigned int hE,
-		const unsigned int wE);
+	FilterRect(const Filter flt, const float hB,
+		const float wB, const float hE,
+		const float wE);
 
 	Filter filter;
-	unsigned int hBeg;
-	unsigned int wBeg;
-	unsigned int hEnd;
-	unsigned int wEnd;	
+	float hBeg;
+	float wBeg;
+	float hEnd;
+	float wEnd;	
 };

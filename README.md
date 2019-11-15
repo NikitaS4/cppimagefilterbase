@@ -2,11 +2,18 @@
 Image filters
 
 Available filters:
+
 Red			# Set pixels to red
+
 Blur		# Blur image
+
 BW 			# Black-white
+
 Edge		# Highlights edges on the image
+
 Threshold	# Noizes smooth areas
+
+FancyBlur	# Just for fun, it's bluf filter with bug (wrong kernel)
 
 How to use:
 1. Put image (*.png) nearby *.exe file

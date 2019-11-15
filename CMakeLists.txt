@@ -26,4 +26,5 @@ add_executable(${PROJECT_NAME} "png_toolkit.cpp" "png_toolkit.h"
 	"Voxel.h" "Voxel.cpp"
 	"FragmFiltrator.h" "FragmFiltrator.cpp"
 	"ThresholdFiltrator.cpp" "ThresholdFiltrator.h"
+	"FancyBlurFiltrator.h" "FancyBlurFiltrator.cpp"
 	"main.cpp")

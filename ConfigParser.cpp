@@ -17,10 +17,10 @@ void ConfigParser::initStream(const std::string& fName) {
 	if (!input)
 		throw std::runtime_error("Can't open file");
 
-	unsigned int hBeg;
-	unsigned int hEnd;
-	unsigned int wBeg;
-	unsigned int wEnd;
+	float hBeg;
+	float hEnd;
+	float wBeg;
+	float wEnd;
 
 	while (!input.eof()) {
 		std::string filterName;		

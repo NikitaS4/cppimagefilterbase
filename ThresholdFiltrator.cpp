@@ -41,10 +41,6 @@ ThresholdFiltrator::ThresholdFiltrator() {
 				intensities[i] = 0;
 			}
 		}
-		/*double median = intensities[intensities.size() / 2];
-		for (unsigned int i = intensities.size() / 2 + 1; i < intensities.size(); ++i) {
-			intensities[i] = median;
-		}*/
 		voxel.put(intensities);
 	};	
 

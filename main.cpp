@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdexcept>
+#include <exception>
 
 #include "stb_image_write.h"
 
@@ -15,7 +16,7 @@
 #include "BWFiltrator.h"
 #include "EdgeFiltrator.h"
 #include "ThresholdFiltrator.h"
-
+#include "FancyBlurFiltrator.h"
 
 int main( int argc, char *argv[] )
 {
@@ -42,6 +43,7 @@ int main( int argc, char *argv[] )
 		BWFiltrator bwFiltrator;
 		EdgeFiltrator edgeFiltrator;
 		ThresholdFiltrator thresholdFiltrator;
+		FancyBlurFiltrator fancyBlurFiltrator;
 
 		for (auto &fRect : filterRects) {
 			real = RectAdapter::frectToReal(fRect, imageData);
@@ -53,9 +55,8 @@ int main( int argc, char *argv[] )
 			case Filter::BLUR:
 				blurFiltrator.apply(real, imageData);
 				break;
-			case Filter::FANCY_BLUR:	
-				//add fancy blur filtrator
-				//blurFiltrator.apply(real, imageData);
+			case Filter::FANCY_BLUR:				
+				fancyBlurFiltrator.apply(real, imageData);
 				break;
 			case Filter::EDGE:
 				edgeFiltrator.apply(real, imageData);
@@ -76,7 +77,10 @@ int main( int argc, char *argv[] )
     catch (std::runtime_error& err)
     {
         std::cout << "Error: " << err.what() << std::endl;        
-    }	
+    }			
+	catch (std::exception& err) {
+		std::cout << "Exception: " << err.what() << "\n";
+	}
 	catch (...) {
 		std::cout << "Unknown exception\n";
 	}

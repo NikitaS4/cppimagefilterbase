@@ -30,10 +30,8 @@ void BlurFiltrator::apply(RealRect& area, image_data& image) {
 			blues[i][j] = (double)cortege.getB();
 		}		
 	}	
-
-	ConvStrategy* blurStrategy = 
-		new ConvBlurStrategy();	
-	Convolution conv(kerSize, blurStrategy);	
+	
+	Convolution conv(kerSize, convStrategy);	
 	//conv.printKernel(); //for debug only	
 	conv.apply(reds);
 	conv.apply(greens);

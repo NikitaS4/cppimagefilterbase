@@ -11,7 +11,7 @@ bool FilterRect::parseLine(const std::string& str)
 	filter = FilterHelper::parse(fWord); //string to filter
 
 	std::string curWord;
-	std::vector<unsigned int*> params { &hBeg, &wBeg, &hEnd, &wEnd }; //to iterate
+	std::vector<float*> params { &hBeg, &wBeg, &hEnd, &wEnd }; //to iterate
 	unsigned int beg = spacePos + 1; //access violation ?
 	unsigned int end = beg;
 	for (unsigned int i = 0; i < params.size(); ++i) {
@@ -32,19 +32,19 @@ Filter FilterRect::getFilter() const {
 	return filter;
 }
 
-unsigned int FilterRect::getHBeg() const {
+float FilterRect::getHBeg() const {
 	return hBeg;
 }
 
-unsigned int FilterRect::getWBeg()  const {
+float FilterRect::getWBeg()  const {
 	return wBeg;
 }
 
-unsigned int FilterRect::getHEnd() const {
+float FilterRect::getHEnd() const {
 	return hEnd;
 }
 
-unsigned int FilterRect::getWEnd() const {
+float FilterRect::getWEnd() const {
 	return wEnd;
 }
 
@@ -55,16 +55,16 @@ FilterRect FilterRect::createInstance(const std::string& str) {
 }
 
 FilterRect FilterRect::createInstance(const std::string& fName,
-	const unsigned int hBeg, const unsigned int hEnd,
-	const unsigned int wBeg, const unsigned int wEnd) {
+	const float hBeg, const float hEnd,
+	const float wBeg, const float wEnd) {
 	Filter flt = FilterHelper::parse(fName); //string to filter	
 
 	return FilterRect(flt, hBeg, wBeg, hEnd, wEnd);
 }
 
-FilterRect::FilterRect(const Filter flt, const unsigned int hB,
-	const unsigned int wB, const unsigned int hE,
-	const unsigned int wE) : filter(flt), hBeg(hB), hEnd(hE),
+FilterRect::FilterRect(const Filter flt, const float hB,
+	const float wB, const float hE,
+	const float wE) : filter(flt), hBeg(hB), hEnd(hE),
 	wBeg(wB), wEnd(wE) {}
 
 FilterRect::FilterRect() {}

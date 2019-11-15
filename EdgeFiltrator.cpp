@@ -13,6 +13,7 @@ void EdgeFiltrator::apply(RealRect& area,
 	Convolution conv(kerSize, edgeStrategy);	
 	conv.apply(intensityMtx.getMtx());
 	intensityMtx.toBWImage(imPxls, area);
+	delete edgeStrategy;
 }
 
 Filter EdgeFiltrator::getFilterType() const {
