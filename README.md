@@ -15,6 +15,8 @@ Threshold	# Noizes smooth areas
 
 FancyBlur	# Just for fun, it's bluf filter with bug (wrong kernel)
 
+Overflow	# Sets blue component of each pixel to maximum
+
 How to use:
 1. Put image (*.png) nearby *.exe file
 2. Write configuration file
@@ -27,6 +29,9 @@ Coordinates order - top left bottom right (to divide by them: width height width
 If the number is 0, it means 0 coordinate
 
 Config example:
+
 Red 0 0 2 2
 
 Blur 2 2 1 1
+
+In the folder example You can find another config file example
