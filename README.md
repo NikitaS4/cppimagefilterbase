@@ -6,6 +6,7 @@ Red			# Set pixels to red
 Blur		# Blur image
 BW 			# Black-white
 Edge		# Highlights edges on the image
+Threshold	# Noizes smooth areas
 
 How to use:
 1. Put image (*.png) nearby *.exe file

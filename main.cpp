@@ -14,6 +14,7 @@
 #include "BlurFiltrator.h"
 #include "BWFiltrator.h"
 #include "EdgeFiltrator.h"
+#include "ThresholdFiltrator.h"
 
 
 int main( int argc, char *argv[] )
@@ -40,6 +41,7 @@ int main( int argc, char *argv[] )
 		BlurFiltrator blurFiltrator;
 		BWFiltrator bwFiltrator;
 		EdgeFiltrator edgeFiltrator;
+		ThresholdFiltrator thresholdFiltrator;
 
 		for (auto &fRect : filterRects) {
 			real = RectAdapter::frectToReal(fRect, imageData);
@@ -59,7 +61,7 @@ int main( int argc, char *argv[] )
 				edgeFiltrator.apply(real, imageData);
 				break;
 			case Filter::THRESHOLD:
-				//add threshold filtrator
+				thresholdFiltrator.apply(real, imageData);
 				break;
 			case Filter::BW:
 				bwFiltrator.apply(real, imageData);

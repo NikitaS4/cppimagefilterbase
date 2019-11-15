@@ -48,3 +48,11 @@ void SingleCompImage::toBWImage(ImagePixels& imPxls,
 		}
 	}
 }
+
+unsigned int SingleCompImage::getW() {
+	return (unsigned int)(pixels[0].size());
+}
+
+unsigned int SingleCompImage::getH() {
+	return (unsigned int)(pixels.size());
+}

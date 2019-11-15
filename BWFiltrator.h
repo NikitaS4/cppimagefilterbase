@@ -7,6 +7,4 @@ public:
 	Filter getFilterType() const;
 protected:
 	static const Filter f_type = Filter::BW;
-private:
-	static double compress(const double red, const double green, const double blue);
 };

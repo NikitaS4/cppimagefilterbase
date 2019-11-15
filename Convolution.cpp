@@ -37,24 +37,6 @@ void Convolution::apply(std::vector<std::vector<double>>& image) {
 	auto wLim = image.size();
 	auto hLim = image[0].size();
 
-	/*for (int curH = 0; curH < hLim; ++curH) {
-		for (int curW = 0; curW < wLim; ++curW) {
-			for (int kerH = -(int)kerSize / 2; kerH < (int)kerSize / 2; ++kerH) {
-				for (int kerW = -(int)kerSize / 2; kerW < (int)kerSize / 2; ++kerW) {
-					if (kerH + curH < 0 || (long long)kerH + curH >= (long long)hLim ||
-						kerW + curW < 0|| (long long)kerW + curW >= (long long)wLim) {
-						curImPart[(long long)kerW + kerSize / 2][(long long)kerH + kerSize / 2] = 0;
-					}
-					else {						
-						curImPart[(long long)kerW + kerSize / 2][(long long)kerH + kerSize / 2] = 
-							image[(long long)kerW + curW][curH + (long long)kerH];
-					}					
-				}
-			}
-			newImage[curW][curH] = kernel.apply(curImPart);
-		}
-	}	*/
-
 	unsigned int bias = (kerSize - 1) / 2;
 
 	for (unsigned int curH = 0; curH < hLim; ++curH) {

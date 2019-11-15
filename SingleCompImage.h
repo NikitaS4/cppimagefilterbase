@@ -31,6 +31,9 @@ public:
 	std::vector<std::vector<double>>& getMtx();
 
 	void toBWImage(ImagePixels& imPxls, RealRect& area);
+
+	unsigned int getW();
+	unsigned int getH();
 private:
 	SingleCompImage();
 	using mtx_double = std::vector<std::vector<double>>;

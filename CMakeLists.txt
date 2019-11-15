@@ -22,4 +22,8 @@ add_executable(${PROJECT_NAME} "png_toolkit.cpp" "png_toolkit.h"
 	"SingleCompImage.h" "SingleCompImage.cpp"
 	"ConvEdgeStrategy.h" "ConvEdgeStrategy.cpp"
 	"ConvFancyBlurStrategy.h" "ConvFancyBlurStrategy.cpp"
+	"Fragmentation.h" "Fragmentation.cpp"
+	"Voxel.h" "Voxel.cpp"
+	"FragmFiltrator.h" "FragmFiltrator.cpp"
+	"ThresholdFiltrator.cpp" "ThresholdFiltrator.h"
 	"main.cpp")
