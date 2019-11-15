@@ -4,7 +4,9 @@
 
 class FancyBlurFiltrator : public BlurFiltrator {
 public:
-	FancyBlurFiltrator() : BlurFiltrator(new ConvFancyBlurStrategy()) {}
+	FancyBlurFiltrator() : BlurFiltrator(new ConvFancyBlurStrategy()) {
+		kerSize = 3;
+	}
 	
 	virtual Filter getFilterType() const;
 
@@ -13,6 +15,4 @@ public:
 	//}
 protected:
 	static const Filter f_type = Filter::FANCY_BLUR;	
-private:
-	unsigned int kerSize = 3;
 };

@@ -27,4 +27,6 @@ add_executable(${PROJECT_NAME} "png_toolkit.cpp" "png_toolkit.h"
 	"FragmFiltrator.h" "FragmFiltrator.cpp"
 	"ThresholdFiltrator.cpp" "ThresholdFiltrator.h"
 	"FancyBlurFiltrator.h" "FancyBlurFiltrator.cpp"
+	"FilterBase.h" "FilterBase.cpp"
+	"OverflowFiltrator.h" "OverflowFiltrator.cpp"
 	"main.cpp")

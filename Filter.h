@@ -3,13 +3,15 @@
 #include <string>
 
 enum class Filter {
-	UNDEFINED,
-	RED,
+	UNDEFINED = 0,
+	RED = 1,
 	EDGE,
 	THRESHOLD,
 	BLUR,
 	FANCY_BLUR,
-	BW
+	BW,
+	OVER,
+	SIZE
 };
 
 class FilterHelper {

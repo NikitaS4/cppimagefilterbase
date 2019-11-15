@@ -20,5 +20,8 @@ Filter FilterHelper::parse(const std::string& str) {
 	else if (str == "BW") {
 		return Filter::BW;
 	}
+	else if (str == "Overflow") {
+		return Filter::OVER;
+	}
 		return Filter::UNDEFINED;
 }

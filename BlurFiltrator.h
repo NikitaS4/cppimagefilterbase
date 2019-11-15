@@ -15,6 +15,5 @@ public:
 protected:
 	static const Filter f_type = Filter::BLUR;
 	ConvStrategy* convStrategy;
-private:
-	unsigned int kerSize = 3;	
+	unsigned int kerSize = 11;
 };

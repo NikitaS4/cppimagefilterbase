@@ -21,7 +21,7 @@ bool FilterRect::parseLine(const std::string& str)
 		}
 		for (end = beg; str[end] != ' ' && str[end] != '\n' && str[end] != '\0'; ++end);
 		curWord = str.substr(beg, end - 1); //end is space
-		*(params[i]) = std::stoi(curWord); //convert
+		*(params[i]) = std::stof(curWord); //convert
 			beg = end + 1; //for next iteration
 	}
 

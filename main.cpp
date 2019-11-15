@@ -10,13 +10,9 @@
 #include "Filter.h"
 #include "FilterRect.h"
 #include "Filtrator.h"
-#include "RedFiltrator.h"
+#include "FilterBase.h"
+#include "RealRect.h"
 #include "RectAdapter.h"
-#include "BlurFiltrator.h"
-#include "BWFiltrator.h"
-#include "EdgeFiltrator.h"
-#include "ThresholdFiltrator.h"
-#include "FancyBlurFiltrator.h"
 
 int main( int argc, char *argv[] )
 {
@@ -37,40 +33,11 @@ int main( int argc, char *argv[] )
 		RealRect real;
 
 		image_data imageData = studTool.getPixelData();
-
-		RedFiltrator redFiltrator;
-		BlurFiltrator blurFiltrator;
-		BWFiltrator bwFiltrator;
-		EdgeFiltrator edgeFiltrator;
-		ThresholdFiltrator thresholdFiltrator;
-		FancyBlurFiltrator fancyBlurFiltrator;
+		FilterBase filterBase;
 
 		for (auto &fRect : filterRects) {
 			real = RectAdapter::frectToReal(fRect, imageData);
-			switch (fRect.getFilter())
-			{
-			case Filter::RED:
-				redFiltrator.apply(real, imageData);
-				break;
-			case Filter::BLUR:
-				blurFiltrator.apply(real, imageData);
-				break;
-			case Filter::FANCY_BLUR:				
-				fancyBlurFiltrator.apply(real, imageData);
-				break;
-			case Filter::EDGE:
-				edgeFiltrator.apply(real, imageData);
-				break;
-			case Filter::THRESHOLD:
-				thresholdFiltrator.apply(real, imageData);
-				break;
-			case Filter::BW:
-				bwFiltrator.apply(real, imageData);
-				break;
-			default:
-				throw std::runtime_error("Bad filter name");
-				break;
-			}					
+			filterBase.launchFilter(fRect.getFilter(), real, imageData);
 		}		
 		studTool.save(argv[3]);
     }
