@@ -3,8 +3,9 @@ Image filters
 
 Available filters:
 Red			# Set pixels to red
-FancyBlur		# Just for fun
+Blur		# Blur image
 BW 			# Black-white
+Edge		# Highlights edges on the image
 
 How to use:
 1. Put image (*.png) nearby *.exe file

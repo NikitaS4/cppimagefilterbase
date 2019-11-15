@@ -1,8 +1,8 @@
 #include "SingleCompImage.h"
-
+#include <iostream>
 
 double SingleCompImage::compress(const double red, const double green, const double blue) {
-	static const double factors[3] = { 0.3, 0.6, 0.1 };
+	static const double factors[3] = { 0.3, 0.6, 0.1 };	
 	return factors[0] * red + factors[1] * green + factors[2] * blue;
 }
 
@@ -20,9 +20,7 @@ SingleCompImage::SingleCompImage(ImagePixels& imPxls,
 	double red = 0;
 	double green = 0;
 	double blue = 0;
-
-	unsigned int i;
-	unsigned int j;
+	
 	for (unsigned int curW = area.wBeg, i = 0;
 		curW < area.wEnd; ++curW, ++i) {
 		pixels[i].resize(areaH);
@@ -32,7 +30,7 @@ SingleCompImage::SingleCompImage(ImagePixels& imPxls,
 			red = cortege.getR();
 			green = cortege.getG();
 			blue = cortege.getB();
-			pixels[i][j] = compress(red, green, blue);
+			pixels[i][j] = compress(red, green, blue);			
 		}
 	}
 }
@@ -46,7 +44,7 @@ void SingleCompImage::toBWImage(ImagePixels& imPxls,
 			auto cortege = imPxls[curW][curH];
 			cortege.setR((unsigned char)pixels[i][j]);
 			cortege.setG((unsigned char)pixels[i][j]);
-			cortege.setB((unsigned char)pixels[i][j]);
+			cortege.setB((unsigned char)pixels[i][j]);			
 		}
 	}
 }

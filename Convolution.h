@@ -4,7 +4,7 @@
 #include "RealRect.h"
 #include "ConvStrategy.h"
 #include "png_toolkit.h"
-
+#include <vector>
 
 class Convolution {
 public:

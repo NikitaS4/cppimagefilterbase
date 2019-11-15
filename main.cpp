@@ -11,7 +11,7 @@
 #include "Filtrator.h"
 #include "RedFiltrator.h"
 #include "RectAdapter.h"
-#include "FancyBlurFiltrator.h"
+#include "BlurFiltrator.h"
 #include "BWFiltrator.h"
 #include "EdgeFiltrator.h"
 
@@ -37,7 +37,7 @@ int main( int argc, char *argv[] )
 		image_data imageData = studTool.getPixelData();
 
 		RedFiltrator redFiltrator;
-		FancyBlurFiltrator fancyBlurFiltrator;
+		BlurFiltrator blurFiltrator;
 		BWFiltrator bwFiltrator;
 		EdgeFiltrator edgeFiltrator;
 
@@ -48,11 +48,11 @@ int main( int argc, char *argv[] )
 			case Filter::RED:
 				redFiltrator.apply(real, imageData);
 				break;
-			case Filter::FANCY_BLUR:
-				fancyBlurFiltrator.apply(real, imageData);
+			case Filter::BLUR:
+				blurFiltrator.apply(real, imageData);
 				break;
-			case Filter::BLUR:	
-				//add blur filtrator
+			case Filter::FANCY_BLUR:	
+				//add fancy blur filtrator
 				//blurFiltrator.apply(real, imageData);
 				break;
 			case Filter::EDGE:

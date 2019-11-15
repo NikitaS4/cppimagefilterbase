@@ -1,41 +1,41 @@
 #include "PNGCortege.h"
 
-char PNGCortege::getR()
+unsigned char PNGCortege::getR()
 {
 	return rawData[0];
 }
 
-char PNGCortege::getG()
+unsigned char PNGCortege::getG()
 {
 	return rawData[1];
 }
 
-char PNGCortege::getB()
+unsigned char PNGCortege::getB()
 {
 	return rawData[2];
 }
 
-char PNGCortege::getA()
+unsigned char PNGCortege::getA()
 {
 	return rawData[3];
 }
 
-void PNGCortege::setR(char val)
+void PNGCortege::setR(unsigned char val)
 {
 	rawData[0] = val;
 }
 
-void PNGCortege::setG(char val)
+void PNGCortege::setG(unsigned char val)
 {
 	rawData[1] = val;
 }
 
-void PNGCortege::setB(char val)
+void PNGCortege::setB(unsigned char val)
 {
 	rawData[2] = val;
 }
 
-void PNGCortege::setA(char val)
+void PNGCortege::setA(unsigned char val)
 {
 	rawData[3] = val;
 }

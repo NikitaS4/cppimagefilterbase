@@ -4,14 +4,14 @@ class PNGCortege {
 public:
 	PNGCortege(unsigned char* pixel) : rawData(pixel) {}
 
-	char getR();
-	char getG();
-	char getB();
-	char getA();
-	void setR(char val);
-	void setG(char val);
-	void setB(char val);
-	void setA(char val);
+	unsigned char getR();
+	unsigned char getG();
+	unsigned char getB();
+	unsigned char getA();
+	void setR(unsigned char val);
+	void setG(unsigned char val);
+	void setB(unsigned char val);
+	void setA(unsigned char val);
 private:
 	PNGCortege() = delete;
 	unsigned char* rawData;

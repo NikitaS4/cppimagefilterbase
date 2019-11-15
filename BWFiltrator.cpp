@@ -18,9 +18,9 @@ void BWFiltrator::apply(RealRect& area, image_data& image) {
 			PNGCortege curPixel = imPxls[i][j];
 			intensity = (unsigned char)compress(curPixel.getR(), curPixel.getG(),
 				curPixel.getB());
-			curPixel.setR(intensity);
-			curPixel.setG(intensity);
-			curPixel.setB(intensity);
+			curPixel.setR((unsigned char)intensity);
+			curPixel.setG((unsigned char)intensity);
+			curPixel.setB((unsigned char)intensity);
 		}
 	}
 }
