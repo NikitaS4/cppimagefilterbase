@@ -5,9 +5,10 @@
 #include "BlurFiltrator.h"
 #include "BWFiltrator.h"
 #include "EdgeFiltrator.h"
-#include "ThresholdFiltrator.h"
+#include "FancyThresholdFiltrator.h"
 #include "FancyBlurFiltrator.h"
 #include "OverflowFiltrator.h"
+#include "ThresholdFiltrator.h"
 #include <iostream>
 #include <map>
 
@@ -17,6 +18,7 @@ FilterBase::FilterBase() {
 	filterMap.insert(std::make_pair(Filter::BW, new BWFiltrator()));
 	filterMap.insert(std::make_pair(Filter::EDGE, new EdgeFiltrator()));
 	filterMap.insert(std::make_pair(Filter::THRESHOLD, new ThresholdFiltrator()));
+	filterMap.insert(std::make_pair(Filter::FANCY_THRESHOLD, new FancyThresholdFiltrator()));
 	filterMap.insert(std::make_pair(Filter::FANCY_BLUR, new FancyBlurFiltrator()));
 	filterMap.insert(std::make_pair(Filter::OVER, new OverflowFiltrator()));
 	if (filterMap.size() != (unsigned int)(Filter::SIZE) - 1)

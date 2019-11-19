@@ -37,6 +37,12 @@ double ConvKer::apply(std::vector<std::vector<double>>& imagePart) {
 			ans += imagePart[i][j] * kernel[i][j];
 		}
 	}
+	if (ans < 0 || ans >= 256) {
+		ans = 0;
+	}
+	if (ans > 255) {
+		ans = 255;
+	}
 	return ans;
 }
 

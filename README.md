@@ -11,14 +11,16 @@ BW 			# Black-white
 
 Edge		# Highlights edges on the image
 
-Threshold	# Noizes smooth areas
+FancyThreshold	# Noizes smooth areas, based on fragmentations
 
-FancyBlur	# Just for fun, it's bluf filter with bug (wrong kernel)
+Threshold	# Like edge but non-convolutional
+
+FancyBlur	# Just for fun, it's blur filter with bug (wrong kernel)
 
 Overflow	# Sets blue component of each pixel to maximum
 
 How to use:
-1. Put image (*.png) nearby *.exe file
+1. Put image (*.png or *.jpg) nearby *.exe file
 2. Write configuration file
 3. Launch *.exe with 3 arguments: configuration file, image, output image name
 

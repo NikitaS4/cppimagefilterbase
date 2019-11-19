@@ -11,21 +11,27 @@ public:
 
 	class Proxy {
 	public:
-		double& operator[](unsigned int j) {
-			return (*pix)[i][j];
+		double& operator[](unsigned int h) {
+			if (h > (*pix).size()) {
+				throw std::runtime_error("SingleCompImage[][h > size]");
+			}
+			if (w > (*pix)[h].size()) {
+				throw std::runtime_error("SingleCompImage[w > size][]");
+			}			
+			return (*pix)[h][w];
 		}
 	private:
 		friend SingleCompImage;
 		using mtx_double = std::vector<std::vector<double>>;
 		Proxy() = delete;
 		Proxy(mtx_double* pixMtx, unsigned int prevInd) :
-		pix(pixMtx), i(prevInd) {};				
-		unsigned int i;		
+		pix(pixMtx), w(prevInd) {};				
+		unsigned int w;		
 		mtx_double* pix;
 	};
 
-	Proxy operator[] (unsigned int i) {
-		return Proxy(&pixels, i);
+	Proxy operator[] (unsigned int w) {
+		return Proxy(&pixels, w);
 	}
 
 	std::vector<std::vector<double>>& getMtx();

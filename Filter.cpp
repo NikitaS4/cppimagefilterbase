@@ -14,6 +14,9 @@ Filter FilterHelper::parse(const std::string& str) {
 	else if (str == "Threshold") {
 		return Filter::THRESHOLD;
 	}
+	else if (str == "FancyThreshold") {
+		return Filter::FANCY_THRESHOLD;
+	}
 	else if (str == "FancyBlur") {
 		return Filter::FANCY_BLUR;
 	}

@@ -1,14 +1,11 @@
 #pragma once
-#include "FragmFiltrator.h"
-#include "Voxel.h"
-#include <vector>
+#include "Filtrator.h"
 
-class ThresholdFiltrator : public FragmFiltrator {
+class ThresholdFiltrator : public Filtrator {
 public:
-	ThresholdFiltrator();
-	Filter getFilterType() const;	
+	virtual void apply(RealRect& area, image_data& image);
+	virtual Filter getFilterType() const;	
 protected:
 	static const Filter f_type = Filter::THRESHOLD;
-private:
-	static void sort(std::vector<double>& vec);
+	static const unsigned int localityArea = 5;
 };

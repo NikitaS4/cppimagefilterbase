@@ -13,7 +13,7 @@ void Voxel::doForEach(std::function<void(double&)> operation,
 		wNum < w && realW < parent->getW(); ++wNum, ++realW) {
 		for (unsigned int realH = startH, hNum = 0;
 			hNum < h && realH < parent->getH(); ++hNum, ++realH) {
-			double& current = (*parent)[realH][realW];
+			double& current = (*parent)[realW][realH];
 			if (condition(current)) {
 				operation(current);
 			}

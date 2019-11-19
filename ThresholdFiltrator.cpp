@@ -1,55 +1,31 @@
 #include "ThresholdFiltrator.h"
+#include "NeighborGetter.h"
+#include "ImagePixels.h"
+#include "Sorts.h"
 
 Filter ThresholdFiltrator::getFilterType() const {
 	return f_type;
 }
 
-void ThresholdFiltrator::sort(std::vector<double>& vec) {
-	//insertion sort
-	unsigned int place;
-	double buff;
-	for (unsigned int head = 1; head < vec.size(); ++head) {		
-		for (place = 0; place < vec.size() && place < head &&
-			vec[head] > vec[place]; ++place); //find place to insert
-		buff = vec[head];
-		for (unsigned int i = head; i > place; --i) {
-			vec[i] = vec[i - 1];
-		}					
-		vec[place] = buff;
+void ThresholdFiltrator::apply(RealRect& area, image_data& image) {
+	ImagePixels imPxls = ImagePixels::createImage(image);
+	SingleCompImage intensityMtx(imPxls, area);
+	NeighborGetter neighborGetter(intensityMtx, localityArea);
+
+	unsigned int wLim = intensityMtx.getW();
+	unsigned int hLim = intensityMtx.getH();
+
+	for (unsigned int curW = 0; curW < wLim; ++curW) {
+		for (unsigned int curH = 0; curH < hLim; ++curH) {
+			std::vector<double> locality = neighborGetter.get(curW, curH);
+			Sorts::sort(locality);
+			unsigned int locSize = locality.size();				
+			double median = locality[locSize / 2];
+			if (intensityMtx[curW][curH] < median) {
+				intensityMtx[curW][curH] = 0;
+			}			
+		}
 	}
-}
 
-ThresholdFiltrator::ThresholdFiltrator() {
-	auto fOp = [](Voxel & voxel)->void {
-		std::vector<double> intensities = voxel.get();
-		std::vector<double> copyVec = intensities;
-		sort(copyVec);
-		double median = copyVec[copyVec.size() / 2 + copyVec.size() % 2];
-		unsigned int nulledPix = 0;
-
-		for (unsigned int i = 0; i < intensities.size(); ++i) {
-			if (intensities[i] < median) {
-				intensities[i] = 0;
-				++nulledPix;
-			}
-		}
-
-		//the cycle below adds noize to the smooth area
-		for (unsigned int i = 0; i < intensities.size() &&
-			nulledPix < intensities.size() / 2 + 1; ++nulledPix, ++i) {
-			if (intensities[i] == median) {
-				intensities[i] = 0;
-			}
-		}
-		voxel.put(intensities);
-	};	
-
-	auto fCond = [](Voxel & voxel)->bool {
-		return true;
-	};
-
-	wVoxel = 5;
-	hVoxel = 5;
-	fragmOperation = fOp;
-	fragmCondition = fCond;
+	intensityMtx.toBWImage(imPxls, area);
 }

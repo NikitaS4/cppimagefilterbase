@@ -2,8 +2,8 @@
 #include <iostream>
 
 double SingleCompImage::compress(const double red, const double green, const double blue) {
-	static const double factors[3] = { 0.3, 0.6, 0.1 };	
-	return factors[0] * red + factors[1] * green + factors[2] * blue;
+	static const int factors[3] = { 3, 6, 1 };	
+	return (factors[0] * red + factors[1] * green + factors[2] * blue) / 10;
 }
 
 std::vector<std::vector<double>>& SingleCompImage::getMtx() {
