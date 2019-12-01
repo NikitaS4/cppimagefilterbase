@@ -9,12 +9,12 @@ public:
 	void put(unsigned int i, unsigned int j, int data);
 	void setNorm(unsigned int divisor);
 	unsigned int getSize();
-	unsigned int apply(std::vector<std::vector<unsigned int>>& imagePart);
-	unsigned int sumApply(std::vector<std::vector<unsigned int>>& imagePart);
+	unsigned int apply(std::vector<std::vector<unsigned int>>& imagePart);	
 	void print(); //for debug only
 private:
 	ConvKer() = delete;
+	unsigned int clamp(int intensity);
 	unsigned int size;
 	unsigned int normalizationDivisor = 1;
-	std::vector<std::vector<int>> kernel;
+	std::vector<std::vector<int>> kernel;	
 };

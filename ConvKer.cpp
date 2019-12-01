@@ -32,34 +32,26 @@ void ConvKer::print() {
 	}
 }
 
+unsigned int ConvKer::clamp(int intensity) {
+	if (intensity <= 0 || intensity >= 256) {
+		return 0;
+	}
+	return intensity;
+}
+
 unsigned int ConvKer::apply(std::vector<std::vector<unsigned int>>& imagePart) {
 	int ans = 0;
 	if (imagePart.size() != size || imagePart[0].size() != size)
 		throw std::runtime_error("convKer - apply => wrong dimensions");
 	for (unsigned int i = 0; i < size; ++i) {
 		for (unsigned int j = 0; j < size; ++j) {
-			ans += imagePart[i][j] * kernel[i][j];
+			ans += (int)imagePart[i][j] * kernel[i][j];
 		}
 	}
 
 	ans /= normalizationDivisor;
 
-	if (ans < 0 || ans >= 256) {
-		ans = 0;
-	}
-
-	return ans;
+	return clamp(ans);
 }
 
 
-
-unsigned int ConvKer::sumApply(std::vector<std::vector<unsigned int>>& imagePart) {
-	apply(imagePart);
-	unsigned int sum = 0;
-	for (auto& it : imagePart) {
-		for (auto& curVoxel : it) {
-			sum += curVoxel;
-		}
-	}
-	return sum;
-}
