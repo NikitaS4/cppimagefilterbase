@@ -40,9 +40,9 @@ double ConvKer::apply(std::vector<std::vector<double>>& imagePart) {
 	if (ans < 0 || ans >= 256) {
 		ans = 0;
 	}
-	if (ans > 255) {
-		ans = 255;
-	}
+	//if (ans > 255) {
+	//	ans = 255;
+	//}
 	return ans;
 }
 

@@ -14,5 +14,5 @@ public:
 private:
 	ConvKer() = delete;
 	unsigned int size;
-	std::vector<std::vector<double>> kernel;
+	std::vector<std::vector<double>> kernel;	
 };

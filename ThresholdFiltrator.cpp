@@ -20,7 +20,7 @@ void ThresholdFiltrator::apply(RealRect& area, image_data& image) {
 			std::vector<double> locality = neighborGetter.get(curW, curH);
 			Sorts::sort(locality);
 			unsigned int locSize = locality.size();				
-			double median = locality[locSize / 2];
+			double median = locality[locSize / 2 + locSize % 2];
 			if (intensityMtx[curW][curH] < median) {
 				intensityMtx[curW][curH] = 0;
 			}			
