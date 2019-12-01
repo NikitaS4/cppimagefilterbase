@@ -1,10 +1,10 @@
 #include "Sorts.h"
 #include <iostream>
 
-void Sorts::sort(std::vector<double>& vec) {
+void Sorts::sort(std::vector<unsigned int>& vec) {
 	//insertion sort
 	unsigned int place;
-	double buff;
+	unsigned int buff;
 	for (unsigned int head = 1; head < vec.size(); ++head) {
 		for (place = 0; place < vec.size() && place < head &&
 			vec[head] > vec[place]; ++place); //find place to insert

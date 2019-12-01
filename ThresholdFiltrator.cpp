@@ -17,10 +17,10 @@ void ThresholdFiltrator::apply(RealRect& area, image_data& image) {
 
 	for (unsigned int curW = 0; curW < wLim; ++curW) {
 		for (unsigned int curH = 0; curH < hLim; ++curH) {
-			std::vector<double> locality = neighborGetter.get(curW, curH);
+			std::vector<unsigned int> locality = neighborGetter.get(curW, curH);
 			Sorts::sort(locality);
 			unsigned int locSize = locality.size();				
-			double median = locality[locSize / 2];
+			unsigned int median = locality[locSize / 2];
 			if (intensityMtx[curW][curH] < median) {
 				intensityMtx[curW][curH] = 0;
 			}			

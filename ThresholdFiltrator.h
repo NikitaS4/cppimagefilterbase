@@ -1,5 +1,6 @@
 #pragma once
 #include "Filtrator.h"
+#include "Settings.h"
 
 class ThresholdFiltrator : public Filtrator {
 public:
@@ -7,5 +8,5 @@ public:
 	virtual Filter getFilterType() const;	
 protected:
 	static const Filter f_type = Filter::THRESHOLD;
-	static const unsigned int localityArea = 5;
+	static const unsigned int localityArea = THRESHOLD_LOCALITY_AREA;
 };

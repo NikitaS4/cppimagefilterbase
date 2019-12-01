@@ -1,4 +1,5 @@
 #include "ConfigParser.h"
+#include "Settings.h"
 
 void ConfigParser::initStrByStr(const std::string& fName) {
 	std::ifstream input(fName);
@@ -17,10 +18,10 @@ void ConfigParser::initStream(const std::string& fName) {
 	if (!input)
 		throw std::runtime_error("Can't open file");
 
-	float hBeg;
-	float hEnd;
-	float wBeg;
-	float wEnd;
+	CONFIG_RECT_TYPE hBeg;
+	CONFIG_RECT_TYPE hEnd;
+	CONFIG_RECT_TYPE wBeg;
+	CONFIG_RECT_TYPE wEnd;
 
 	while (!input.eof()) {
 		std::string filterName;		

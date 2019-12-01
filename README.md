@@ -13,7 +13,7 @@ Edge		# Highlights edges on the image
 
 FancyThreshold	# Noizes smooth areas, based on fragmentations
 
-Threshold	# Like edge but non-convolutional
+Threshold	# Noizes smooth areas
 
 FancyBlur	# Just for fun, it's blur filter with bug (wrong kernel)
 
@@ -36,4 +36,8 @@ Red 0 0 2 2
 
 Blur 2 2 1 1
 
+Threshold 2 0 1 2
+
 In the folder example You can find another config file example
+
+File Settings.h includes some macroses those can be used to customize filters (convolution kernel sizes) and the format of numbers in the config (can be float or unsigned int)

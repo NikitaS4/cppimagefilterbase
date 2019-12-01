@@ -10,7 +10,7 @@ class Convolution {
 public:
 	Convolution(unsigned int kerSize, ConvStrategy* strategy);
 
-	void apply(std::vector<std::vector<double>>& image);
+	void apply(std::vector<std::vector<unsigned int>>& image);
 	void printKernel(); //for debug only
 private:
 	Convolution() = delete;	

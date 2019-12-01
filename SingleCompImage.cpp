@@ -1,12 +1,12 @@
 #include "SingleCompImage.h"
 #include <iostream>
 
-double SingleCompImage::compress(const double red, const double green, const double blue) {
+unsigned int SingleCompImage::compress(const unsigned int red, const unsigned int green, const unsigned int blue) {
 	static const int factors[3] = { 3, 6, 1 };	
 	return (factors[0] * red + factors[1] * green + factors[2] * blue) / 10;
 }
 
-std::vector<std::vector<double>>& SingleCompImage::getMtx() {
+std::vector<std::vector<unsigned int>>& SingleCompImage::getMtx() {
 	return pixels;
 }
 
@@ -17,9 +17,9 @@ SingleCompImage::SingleCompImage(ImagePixels& imPxls,
 
 	pixels.resize(areaW);
 
-	double red = 0;
-	double green = 0;
-	double blue = 0;
+	unsigned int red = 0;
+	unsigned int green = 0;
+	unsigned int blue = 0;
 	
 	for (unsigned int curW = area.wBeg, i = 0;
 		curW < area.wEnd; ++curW, ++i) {
