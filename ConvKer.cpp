@@ -33,7 +33,10 @@ void ConvKer::print() {
 }
 
 unsigned int ConvKer::clamp(int intensity) {
-	if (intensity <= 0 || intensity >= 256) {
+	if (intensity >= 256) {
+		return 255;
+	}
+	if (intensity <= 0) {
 		return 0;
 	}
 	return intensity;
