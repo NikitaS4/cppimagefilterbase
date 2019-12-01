@@ -12,6 +12,8 @@ void ThresholdFiltrator::apply(RealRect& area, image_data& image) {
 	SingleCompImage intensityMtx(imPxls, area);
 	NeighborGetter neighborGetter(intensityMtx, localityArea);
 
+	SingleCompImage newMtx(intensityMtx);
+
 	unsigned int wLim = intensityMtx.getW();
 	unsigned int hLim = intensityMtx.getH();
 
@@ -22,10 +24,12 @@ void ThresholdFiltrator::apply(RealRect& area, image_data& image) {
 			unsigned int locSize = locality.size();				
 			unsigned int median = locality[locSize / 2 + locSize % 2];
 			if (intensityMtx[curW][curH] < median) {
-				intensityMtx[curW][curH] = 0;
+				newMtx[curW][curH] = 0;
 			}			
 		}
 	}
+
+	std::swap(intensityMtx, newMtx);
 
 	intensityMtx.toBWImage(imPxls, area);
 }
