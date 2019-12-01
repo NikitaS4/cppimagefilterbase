@@ -1,5 +1,6 @@
 #pragma once
 #include "Filtrator.h"
+#include "Settings.h"
 
 class EdgeFiltrator : public Filtrator {
 public:
@@ -8,5 +9,5 @@ public:
 protected:
 	static const Filter f_type = Filter::EDGE;
 private:
-	unsigned int kerSize = 3;
+	unsigned int kerSize = EDGE_CONV_KER_SIZE;
 };

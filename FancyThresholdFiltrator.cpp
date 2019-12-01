@@ -1,5 +1,5 @@
 #include "FancyThresholdFiltrator.h"
-
+#include "Settings.h"
 #include "Sorts.h"
 
 Filter FancyThresholdFiltrator::getFilterType() const {
@@ -8,10 +8,10 @@ Filter FancyThresholdFiltrator::getFilterType() const {
 
 FancyThresholdFiltrator::FancyThresholdFiltrator() {
 	auto fOp = [](Voxel & voxel)->void {
-		std::vector<double> intensities = voxel.get();
-		std::vector<double> copyVec = intensities;
+		std::vector<unsigned int> intensities = voxel.get();
+		std::vector<unsigned int> copyVec = intensities;
 		Sorts::sort(copyVec);
-		double median = copyVec[copyVec.size() / 2 + copyVec.size() % 2];
+		unsigned int median = copyVec[copyVec.size() / 2 + copyVec.size() % 2];
 		unsigned int nulledPix = 0;
 
 		for (unsigned int i = 0; i < intensities.size(); ++i) {
@@ -35,8 +35,8 @@ FancyThresholdFiltrator::FancyThresholdFiltrator() {
 		return true;
 	};
 
-	wVoxel = 5;
-	hVoxel = 5;
+	wVoxel = FANCY_THRESHOLD_AREA_W;
+	hVoxel = FANCY_THRESHOLD_AREA_H;
 	fragmOperation = fOp;
 	fragmCondition = fCond;
 }

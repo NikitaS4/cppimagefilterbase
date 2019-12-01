@@ -8,9 +8,9 @@
 void BlurFiltrator::apply(RealRect& area, image_data& image) {
 	ImagePixels imPxls = ImagePixels::createImage(image);
 
-	std::vector<std::vector<double>> reds;
-	std::vector<std::vector<double>> greens;
-	std::vector<std::vector<double>> blues;
+	std::vector<std::vector<unsigned int>> reds;
+	std::vector<std::vector<unsigned int>> greens;
+	std::vector<std::vector<unsigned int>> blues;
 
 	auto areaH = area.hEnd - area.hBeg;
 	auto areaW = area.wEnd - area.wBeg;
@@ -25,9 +25,9 @@ void BlurFiltrator::apply(RealRect& area, image_data& image) {
 		blues[i].resize(areaH);		
 		for (unsigned int curH = area.hBeg, j = 0; curH < area.hEnd; ++curH, ++j) {			
 			auto cortege = imPxls[curW][curH];
-			reds[i][j] = (double)cortege.getR();
-			greens[i][j] = (double)cortege.getG();
-			blues[i][j] = (double)cortege.getB();
+			reds[i][j] = cortege.getR();
+			greens[i][j] = cortege.getG();
+			blues[i][j] = cortege.getB();
 		}		
 	}	
 	

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 project(student_toolkit)
 add_executable(${PROJECT_NAME} "png_toolkit.cpp" "png_toolkit.h"
     "stb_image.h" "stb_image_write.h" 
+	"Settings.h"
 	"ConfigParser.h" "ConfigParser.cpp" 
 	"Filter.h" "Filter.cpp" 
 	"FilterRect.h" "FilterRect.cpp" 
@@ -31,5 +32,5 @@ add_executable(${PROJECT_NAME} "png_toolkit.cpp" "png_toolkit.h"
 	"OverflowFiltrator.h" "OverflowFiltrator.cpp"
 	"NeighborGetter.h" "NeighborGetter.cpp" 
 	"ThresholdFiltrator.h" "ThresholdFiltrator.cpp"
-	"Sorts.h" "Sorts.cpp"
+	"Sorts.h" "Sorts.cpp"	
 	"main.cpp")

@@ -11,7 +11,7 @@ public:
 
 	class Proxy {
 	public:
-		double& operator[](unsigned int h) {
+		unsigned int& operator[](unsigned int h) {
 			if (h > (*pix).size()) {
 				throw std::runtime_error("SingleCompImage[][h > size]");
 			}
@@ -22,7 +22,7 @@ public:
 		}
 	private:
 		friend SingleCompImage;
-		using mtx_double = std::vector<std::vector<double>>;
+		using mtx_double = std::vector<std::vector<unsigned int>>;
 		Proxy() = delete;
 		Proxy(mtx_double* pixMtx, unsigned int prevInd) :
 		pix(pixMtx), w(prevInd) {};				
@@ -34,7 +34,7 @@ public:
 		return Proxy(&pixels, w);
 	}
 
-	std::vector<std::vector<double>>& getMtx();
+	std::vector<std::vector<unsigned int>>& getMtx();
 
 	void toBWImage(ImagePixels& imPxls, RealRect& area);
 
@@ -42,7 +42,7 @@ public:
 	unsigned int getH();
 private:
 	SingleCompImage();
-	using mtx_double = std::vector<std::vector<double>>;
+	using mtx_double = std::vector<std::vector<unsigned int>>;
 	mtx_double pixels;
-	static double compress(const double red, const double green, const double blue);	
+	static unsigned int compress(const unsigned int red, const unsigned int green, const unsigned int blue);
 };

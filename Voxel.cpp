@@ -7,13 +7,13 @@ Voxel::Voxel(SingleCompImage* parentImage,
 w(dimW), h(dimH), parent(parentImage),
 startW(firstPixW), startH(firstPixH) {}
 
-void Voxel::doForEach(std::function<void(double&)> operation,
-	std::function<bool(double&)> condition) {	
+void Voxel::doForEach(std::function<void(unsigned int&)> operation,
+	std::function<bool(unsigned int&)> condition) {
 	for (unsigned int realW = startW, wNum = 0;
 		wNum < w && realW < parent->getW(); ++wNum, ++realW) {
 		for (unsigned int realH = startH, hNum = 0;
 			hNum < h && realH < parent->getH(); ++hNum, ++realH) {
-			double& current = (*parent)[realW][realH];
+			unsigned int& current = (*parent)[realW][realH];
 			if (condition(current)) {
 				operation(current);
 			}
@@ -21,20 +21,20 @@ void Voxel::doForEach(std::function<void(double&)> operation,
 	}
 }
 
-std::vector<double> Voxel::get() {
-	std::vector<double> ans;
-	auto condition = [](double&)->bool { return true; };
-	auto getter = [&ans](double& current)->void {
+std::vector<unsigned int> Voxel::get() {
+	std::vector<unsigned int> ans;
+	auto condition = [](unsigned int&)->bool { return true; };
+	auto getter = [&ans](unsigned int& current)->void {
 		ans.push_back(current);
 	};
 	doForEach(getter, condition);
 	return ans;
 }
 
-void Voxel::put(std::vector<double>& newPixels) {
+void Voxel::put(std::vector<unsigned int>& newPixels) {
 	unsigned int i = 0;
-	auto condition = [](double&)->bool { return true; };	
-	auto setter = [&newPixels, &i](double& current)mutable->void {
+	auto condition = [](unsigned int&)->bool { return true; };
+	auto setter = [&newPixels, &i](unsigned int& current)mutable->void {
 		if (i >= newPixels.size())
 			throw std::runtime_error("Put - wrong index");
 		current = newPixels[i++];

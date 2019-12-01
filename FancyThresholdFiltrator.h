@@ -10,5 +10,5 @@ public:
 protected:
 	static const Filter f_type = Filter::FANCY_THRESHOLD;
 private:
-	static void sort(std::vector<double>& vec);
+	static void sort(std::vector<unsigned int>& vec);
 };

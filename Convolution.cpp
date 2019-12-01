@@ -15,8 +15,8 @@ void Convolution::printKernel() {
 	std::cout << "===========\n";
 }
 
-void Convolution::apply(std::vector<std::vector<double>>& image) {
-	std::vector<std::vector<double>> curImPart;
+void Convolution::apply(std::vector<std::vector<unsigned int>>& image) {
+	std::vector<std::vector<unsigned int>> curImPart;
 	unsigned int kerSize = kernel.getSize();
 	curImPart.resize(kerSize);
 
@@ -24,8 +24,8 @@ void Convolution::apply(std::vector<std::vector<double>>& image) {
 		curImPart[i].resize(kerSize);
 	}	
 
-	std::vector<std::vector<double>> newImage;
-	std::vector<double> curVec;
+	std::vector<std::vector<unsigned int>> newImage;
+	std::vector<unsigned int> curVec;
 	for (unsigned int i = 0; i < image.size(); ++i) {		
 		for (unsigned int j = 0; j < image[i].size(); ++j) {
 			curVec.push_back(image[i][j]);
@@ -49,7 +49,7 @@ void Convolution::apply(std::vector<std::vector<double>>& image) {
 					}
 					else {
 						curImPart[kerW][kerH] =
-							image[(unsigned)((double)curW - bias + kerW)][(unsigned)((double)curH - bias + kerH)];
+							image[(unsigned)(curW - bias + kerW)][(unsigned)(curH - bias + kerH)];
 					}
 				}
 			}

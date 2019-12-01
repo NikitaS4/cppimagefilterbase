@@ -3,5 +3,5 @@
 
 class Sorts { //helper
 public:
-	static void sort(std::vector<double>& vec);
+	static void sort(std::vector<unsigned int>& vec);
 };

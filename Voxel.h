@@ -11,11 +11,11 @@ public:
 		unsigned int firstPixW, unsigned int firstPixH,
 		unsigned int dimW, unsigned int dimH);
 
-	void doForEach(std::function<void(double&)> operation,
-		std::function<bool(double&)> condition); //iterator - for each pixel in the voxel
+	void doForEach(std::function<void(unsigned int&)> operation,
+		std::function<bool(unsigned int&)> condition); //iterator - for each pixel in the voxel
 
-	std::vector<double> get();
-	void put(std::vector<double>& newPixels);
+	std::vector<unsigned int> get();
+	void put(std::vector<unsigned int>& newPixels);
 
 private:
 	unsigned int w;

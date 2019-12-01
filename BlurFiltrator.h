@@ -1,6 +1,7 @@
 #pragma once
 #include "Filtrator.h"
 #include "ConvBlurStrategy.h"
+#include "Settings.h"
 
 class BlurFiltrator : public Filtrator {
 public:
@@ -15,5 +16,5 @@ public:
 protected:
 	static const Filter f_type = Filter::BLUR;
 	ConvStrategy* convStrategy;
-	unsigned int kerSize = 3;
+	unsigned int kerSize = BLUR_CONV_KER_SIZE;
 };
